@@ -9,5 +9,7 @@ Bahasa yang digunakan : PHP dan Javascript serta dengan bantuan beberapa plugin
 -- Nyalakan Apache dan MySql
 -- Tekan Admin di MySql
 -- Buat Database baru dengan nama 'db_eltimpus'
+-- Kembali ke folder aplikasi-eltimpus lalu klik folder database
+-- Import Database dengan file sql di folder database
 -- buat page baru di chrome lalu tulis url 'http://localhost/aplikasi-eltimpus/admin/dashboard.php'
 -- Pastikan tidak ada error saat menjalankan Aplikasi dan apabila terjadi error cek ulang lokasi menaruh foldernya
