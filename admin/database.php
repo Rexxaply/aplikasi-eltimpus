@@ -29,7 +29,7 @@
                                 <i class="fas fa-database fa-8x text-warning"></i>
                                 <div class="card-body">
                                     <p class="card-text">Klik untuk membackup</p>
-                                    <a href="../config/backup.php" class="btn btn-success">Backup</a>
+                                    <a href="../database/backup.php" class="btn btn-success">Backup</a>
                                 </div>
                             </div>
                         </div>

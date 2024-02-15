@@ -55,12 +55,12 @@ CREATE TABLE `mahasiswa` (
   `nim` varchar(20) NOT NULL,
   `nama_mahasiswa` varchar(100) NOT NULL,
   `jurusan` varchar(100) NOT NULL,
-  `alamat` varchar(100) NOT NULL,
+  `jk` enum('L','P') NOT NULL,
   `foto` varchar(100) NOT NULL,
   `jabatan` varchar(25) NOT NULL,
   PRIMARY KEY (`id_mahasiswa`),
   UNIQUE KEY `nim` (`nim`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 

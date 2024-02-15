@@ -5,7 +5,15 @@ $page = $_GET['page'];
 
 switch ($page) {
     case 'tambahMahasiswa':
-        include 'modules/mahasiswa/tambahMahasiswa.php';
+        switch ($aksi) {
+            case '':
+                include 'modules/mahasiswa/tambahMahasiswa.php';
+                break;
+
+            case 'xls':
+                include 'modules/mahasiswa/importXls.php';
+                break;
+        }
         break;
 
     case 'dataMahasiswa':
@@ -57,7 +65,7 @@ switch ($page) {
         break;
 
     case 'matkul':
-        
+
         switch ($aksi) {
             case '':
                 include 'modules/data/matkul/matkul.php';
@@ -70,9 +78,9 @@ switch ($page) {
             case 'delete':
                 include 'modules/data/matkul/deleteMatkul.php';
                 break;
-            }
+        }
         break;
-        
+
 
     case 'penanggungJawab':
         include 'modules/data/penanggungJawab.php';
@@ -109,7 +117,7 @@ switch ($page) {
     case 'backup':
         include 'database.php';
         break;
-        
+
     case '':
         include 'beranda.php';
         break;

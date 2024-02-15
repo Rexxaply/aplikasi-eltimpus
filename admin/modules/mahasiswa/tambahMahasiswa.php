@@ -32,7 +32,7 @@
                                     Form Entry Nama Instruktur
                                 </div>
                                 <div>
-                                    <!-- <?php include 'alert.php' ?> -->
+                                    <button class="btn btn-success mt-3" data-toggle="modal" data-target="#sample">Import Data Mahasiswa</button>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -65,8 +65,12 @@
                                     </div>
 
                                     <div class="mb-3 form-group">
-                                        <label for="alamat">Alamat</label>
-                                        <textarea class="form-control" name="alamat" id="alamat" placeholder="Masukkan Alamat Mahasiswa" rows="3" required></textarea>
+                                        <label for="jk">Jenis Kelamin</label>
+                                        <select name="jk" id="jk" class="form-control" required>
+                                            <option value="" selected disabled>-- Pilih --</option>
+                                            <option value="L">Laki-Laki</option>
+                                            <option value="P">Perempuan</option>
+                                        </select>
                                     </div>
 
                                     <div class="mb-3 form-group file-images">
@@ -94,4 +98,42 @@
             </div>
         </div>
     </footer>
+</div>
+
+<!-- Modal XLS -->
+<div class="modal fade" id="sample" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">XLS Upload</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="?page=tambahMahasiswa&aksi=xls" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="form-group file-images">
+                        <input type="file" class="form-control gambar" name="userfile" id="filexls">
+                    </div>
+
+                    <div>
+                        <span>* Catatan</span>
+                        <ul class="mt-3">
+                            <li>Saat sudah selesai menginput data maka header wajib dihapus</li>
+                            <li>Pastikan data tidak ada yang kosong</li>
+                            <li>Jurusan harus sesuai dengan data jurusan yang sudah tersedia</li>
+                            <li>Untuk Jenis Kelamin hanya perlu menulis L untuk laki-laki dan P untuk Perempuan</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <a href="../assets/XLS/sample.xlsx" class="fa-2x" download="sample">Download Sample XLSX</a>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-dismiss="modal">Batal</button>
+                    <button type="submit" name="tambahSemester" class="btn btn-primary">Upload File XLS/XXLSX</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
