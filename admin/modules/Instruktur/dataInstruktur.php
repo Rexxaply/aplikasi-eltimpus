@@ -44,21 +44,25 @@
                                                 <th>Kode Instruktur</th>
                                                 <th>Nama Instruktur</th>
                                                 <th>Email</th>
-                                                <th>Foto</th>
                                                 <th width="80">Edit</th>
                                                 <th width="80">Hapus</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php 
+                                                $no = 1;
+                                                $q = $conn->query("SELECT * FROM instruktur ORDER BY kode_instruktur ASC");
+                                                foreach ($q as $ins) {
+                                            ?>
                                             <tr>
-                                                <td>1.</td>
-                                                <td>INS-001-ELT</td>
-                                                <td>Juleha</td>
-                                                <td>juleha@gmail.com</td>
-                                                <td><img src="../assets/img/user/person.png" style="width: 45px; aspect-ratio: 1/1; background: #dfdfdf; object-fit: cover;" alt=""></td>
+                                                <td><?= $no++ ?>.</td>
+                                                <td><?= $ins['kode_instruktur'] ?></td>
+                                                <td><?= $ins['nama_instruktur'] ?></td>
+                                                <td><?= $ins['email'] ?></td>
                                                 <td><a href="" class="btn btn-sm btn-primary"><i class="fas fa-edit text-white"></i></a></td>
                                                 <td><a href="" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a></td>
                                             </tr>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
