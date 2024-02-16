@@ -21,7 +21,15 @@ switch ($page) {
         break;
 
     case 'dataInstruktur':
-        include 'modules/instruktur/dataInstruktur.php';
+        switch ($aksi) {
+            case '':
+                include 'modules/instruktur/dataInstruktur.php';
+                break;
+            
+            case 'delete':
+                include 'modules/Instruktur/deleteInstruktur.php';
+                break;
+        }
         break;
 
     case 'tambahInstruktur':

@@ -60,7 +60,30 @@
                                                 <td><?= $ins['nama_instruktur'] ?></td>
                                                 <td><?= $ins['email'] ?></td>
                                                 <td><a href="" class="btn btn-sm btn-primary"><i class="fas fa-edit text-white"></i></a></td>
-                                                <td><a href="" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteInstruktur<?= $ins['id_instruktur'] ?>"><i class="fas fa-trash"></i></button>
+
+                                                    <div class="modal fade" id="deleteInstruktur<?= $ins['id_instruktur'] ?>" tabindex="-1" role="dialog" aria-labelledby="modalHapuseTitle" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalCenterTitle">Hapus Penanggung Jawab</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Yakin Ingin Menghapus Instruktur <strong class="text-danger"><?= $ins['nama_instruktur'] ?></strong>?
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                                                        <a href="?page=dataInstruktur&aksi=delete&id=<?= $ins['id_instruktur'] ?>" class="btn btn-primary">Hapus</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                </td>
                                             </tr>
                                             <?php } ?>
                                         </tbody>
