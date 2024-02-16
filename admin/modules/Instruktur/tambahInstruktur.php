@@ -58,9 +58,9 @@
                                         <input type="email" name="email" id="email" class="form-control" required autocomplete="off" placeholder="Masukkan Email Instruktur">
                                     </div>
                                     <div class="mb-3 form-group file-images">
-                                        <!-- <img src="../assets/img/user/person.png" class="mb-2 rounded-circle" id="images"> -->
-                                        <label for="gambar" class="text-black d-block">Foto</label>
-                                        <input type="file" class="gambar form-control" id="gambar" name="foto">
+                                        <img src="../assets/img/user/person.png" class="mb-2 rounded-circle" id="images">
+                                        <label for="foto" class="text-black d-block">Foto</label>
+                                        <input type="file" class="gambar form-control" id="foto" name="foto">
                                     </div>
                                     <div class="mb-3 form-group">
                                         <button type="submit" name="tambahInstruktur" class="w-100 btn btn-outline-success">Submit</button>

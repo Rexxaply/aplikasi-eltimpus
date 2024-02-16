@@ -5,7 +5,6 @@ CREATE TABLE `instruktur` (
   `kode_instruktur` varchar(50) NOT NULL,
   `nama_instruktur` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `foto` varchar(100) NOT NULL,
   PRIMARY KEY (`id_instruktur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -33,8 +32,10 @@ CREATE TABLE `jurusan` (
   `kode_jurusan` varchar(25) NOT NULL,
   `jurusan` varchar(100) NOT NULL,
   PRIMARY KEY (`id_jurusan`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO jurusan VALUES("19","ELT - 001","Manajemen Informatika & Komputer 5");
+INSERT INTO jurusan VALUES("20","ELT - 002","Manajemen Informatika & Komputer 2");
 
 
 
@@ -54,7 +55,7 @@ CREATE TABLE `mahasiswa` (
   `id_mahasiswa` int(11) NOT NULL AUTO_INCREMENT,
   `nim` varchar(20) NOT NULL,
   `nama_mahasiswa` varchar(100) NOT NULL,
-  `jurusan` varchar(100) NOT NULL,
+  `jurusan` text NOT NULL,
   `jk` enum('L','P') NOT NULL,
   `foto` varchar(100) NOT NULL,
   `jabatan` varchar(25) NOT NULL,
@@ -72,7 +73,7 @@ CREATE TABLE `mata_kuliah` (
   PRIMARY KEY (`id_matkul`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO mata_kuliah VALUES("7","ELT - 001","Web Programming");
+INSERT INTO mata_kuliah VALUES("7","ELT - 001","Web Programming B");
 
 
 
@@ -84,7 +85,7 @@ CREATE TABLE `semester` (
   PRIMARY KEY (`id_semester`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO semester VALUES("27","ELT2024143105","Semester 1","true");
+INSERT INTO semester VALUES("27","ELT2024143105","Semester 1","false");
 
 
 
@@ -93,16 +94,17 @@ CREATE TABLE `tahun_ajaran` (
   `tahun_pelajaran` varchar(25) NOT NULL,
   `status` varchar(11) NOT NULL,
   PRIMARY KEY (`id_tahun_ajaran`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO tahun_ajaran VALUES("8","2020/2021","true");
 
 
 
 CREATE TABLE `wali` (
   `id_wali` int(11) NOT NULL AUTO_INCREMENT,
-  `jurusan` varchar(100) NOT NULL,
+  `jurusan_id` int(11) NOT NULL,
   `nama_instruktur` varchar(100) NOT NULL,
   PRIMARY KEY (`id_wali`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
