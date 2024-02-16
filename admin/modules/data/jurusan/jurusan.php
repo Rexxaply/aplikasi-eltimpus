@@ -57,8 +57,44 @@
                                                     <td><?= $no++ ?></td>
                                                     <td><?= $jrs['kode_jurusan'] ?></td>
                                                     <td><?= $jrs['jurusan'] ?></td>
-                                                    <td><a href="" class="btn btn-sm btn-primary"><i class="fas fa-edit text-white"></i></a></td>
                                                     <td>
+                                                        <!--Button Edit-->
+                                                        <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalEdit<?= $jrs['id_jurusan'] ?>"><i class="fas fa-edit text-white"></i></a>
+                                                    </td>
+                                                    <td>
+
+                                                        <!-- Modal Edit -->
+                                                        <div class="modal fade" id="modalEdit<?= $jrs['id_jurusan'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Edit Jurusan</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <form action="?page=jurusan&aksi=edit" method="post">
+                                                                        <div class="modal-body">
+                                                                            <div class="form-group">
+                                                                                <input type="hidden" name="id_jurusan" value="<?= $jrs['id_jurusan'] ?>">
+                                                                                <label>Kode Jurusan</label>
+                                                                                <input type="text" class="form-control" name="kode" value="<?= $jrs['kode_jurusan'] ?>" readonly>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="jurusan">Jurusan</label>
+                                                                                <input type="text" class="form-control" name="jurusan" id="jurusan" value="<?= $jrs['jurusan'] ?>" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn" data-dismiss="modal">Batal</button>
+                                                                            <button type="submit" name="editJurusan" class="btn btn-primary">Submit</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
                                                         <!-- Button Hapus -->
                                                         <button data-toggle="modal" data-target="#modalHapus<?= $jrs['id_jurusan'] ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
 

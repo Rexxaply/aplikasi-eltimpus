@@ -118,7 +118,50 @@
                                                     <!-- Opsi Delete & Hapus -->
                                                     <td>
                                                         <!-- Button Update -->
-                                                        <a href="" class="btn btn-sm btn-primary"><i class="fas fa-edit text-white"></i></a>
+                                                        <button data-toggle="modal" data-target="#editmodal<?= $thn['id_tahun_ajaran'] ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit text-white"></i></button>
+
+                                                        <!-- Modal Edit -->
+                                                        <div class="modal fade" id="editmodal<?= $thn['id_tahun_ajaran'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Edit Tahun Ajaran</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <form action="?page=tahunAjaran&aksi=edit" method="post">
+                                                                        <div class="modal-body">
+                                                                            <div class="form-group">
+                                                                                <input type="hidden" name="id_tahun_ajaran" value="<?= $thn['id_tahun_ajaran'] ?>">
+                                                                                <label for="thn">Tahun Ajaran</label>
+                                                                                <div class="input-group">
+                                                                                    <?php 
+                                                                                    $thn_masuk = $thn['tahun_pelajaran'];
+                                                                                    $thn_masuk_int = substr($thn_masuk, 0, 4);
+                                                                                    $thn_keluar = $thn['tahun_pelajaran'];
+                                                                                    $thn_keluar_int = substr($thn_keluar, 5, 4);
+                                                                                    ?>
+
+                                                                                    <input type="text" name="thn_masuk" value="<?= $thn_masuk_int ?>" class="date-picker form-control" autocomplete="off" required>
+
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">/</span>
+                                                                                    </div>
+
+                                                                                    <input type="text" name="thn_keluar" value="<?= $thn_keluar_int ?>" autocomplete="off" class="date-picker form-control" required>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn" data-dismiss="modal">Batal</button>
+                                                                            <button type="submit" name="editThnAjaran" class="btn btn-primary">Submit</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                     </td>
                                                     <td>
                                                         <!-- Button Hapus -->

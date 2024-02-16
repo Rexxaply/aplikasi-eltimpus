@@ -59,14 +59,45 @@
                                                     <td><?= $mtk['mata_kuliah'] ?></td>
                                                     <td>
                                                         <!-- Button Update & Modal -->
-                                                        <button href="" class="btn btn-sm btn-primary"><i class="fas fa-edit text-white" data-toggle="modal" data-target="#updateMatkul<?= $mtk['id_matkul'] ?>"></i></button>
+                                                        <button href="" class="btn btn-sm btn-primary"><i class="fas fa-edit text-white" data-toggle="modal" data-target="#editMatkul<?= $mtk['id_matkul'] ?>"></i></button>
                                                     </td>
                                                     <td>
+
+                                                        <!-- Modal Edit -->
+                                                        <div class="modal fade" id="editMatkul<?= $mtk['id_matkul'] ?>"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Edit Mata Kuliah</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <form action="?page=matkul&aksi=edit" method="post">
+                                                                        <div class="modal-body">
+                                                                            <div class="form-group">
+                                                                                <input type="hidden" name="id_matkul" value="<?= $mtk['id_matkul'] ?>">
+                                                                                <label for="">Kode Mata Kuliah</label>
+                                                                                <input type="text" name="kode_matkul" value="<?= $mtk['kode_matkul'] ?>" class="date-picker form-control" readonly required>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="mata_kuliah">Mata Kuliah</label>
+                                                                                <input type="text" id="mata_kuliah" name="mata_kuliah" class="form-control" value="<?= $mtk['mata_kuliah'] ?>" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn" data-dismiss="modal">Batal</button>
+                                                                            <button type="submit" name="editMatkul" class="btn btn-primary">Submit</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <!-- Button Hapus & Modal -->
                                                         <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMatkul<?= $mtk['id_matkul'] ?>"><i class="fas fa-trash"></i></button>
 
                                                         <div class="modal fade" id="deleteMatkul<?= $mtk['id_matkul'] ?>" tabindex="-1" role="dialog" aria-labelledby="modalHapuseTitle" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title" id="exampleModalCenterTitle">Hapus Mata Kuliah</h5>

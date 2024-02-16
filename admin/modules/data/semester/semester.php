@@ -118,7 +118,37 @@
                                                             <?php } ?>
                                                     </td>
                                                     <!-- Opsi Delete & Hapus -->
-                                                    <td><a href="" class="btn btn-sm btn-primary"><i class="fas fa-edit text-white"></i></a></td>
+                                                    <td>
+                                                        <!--Button Edit-->
+                                                        <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalEdit<?= $sms['id_semester'] ?>"><i class="fas fa-edit text-white"></i></button>
+
+                                                            <!-- Modal edit -->
+                                                            <div class="modal fade" id="modalEdit<?= $sms['id_semester'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Semester</h5>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <form action="?page=semester&aksi=edit" method="post">
+                                                                            <div class="modal-body">
+                                                                                <input type="hidden" name="id_semester" value="<?= $sms['id_semester'] ?>">
+                                                                                <div class="form-group">
+                                                                                    <label for="semester">Semester</label>
+                                                                                    <input type="text" class="form-control" name="semester" id="semester" value="<?= $sms['semester'] ?>" autocomplete="off" required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn" data-dismiss="modal">Batal</button>
+                                                                                <button type="submit" name="editSemester" class="btn btn-primary">Submit</button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                    </td>
                                                     <td>
                                                         <!-- Button Hapus -->
                                                         <button data-toggle="modal" data-target="#modalHapus<?= $sms['id_semester'] ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>

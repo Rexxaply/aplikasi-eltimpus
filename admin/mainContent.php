@@ -38,6 +38,10 @@ switch ($page) {
                 include 'modules/data/jurusan/tambahJurusan.php';
                 break;
 
+            case 'edit':
+                include 'modules/data/jurusan/editJurusan.php';
+                break;
+
             case 'delete':
                 include 'modules/data/jurusan/deleteJurusan.php';
                 break;
@@ -58,6 +62,10 @@ switch ($page) {
                 include 'modules/data/semester/stsSemester.php';
                 break;
 
+            case 'edit':
+                include 'modules/data/semester/editSemester.php';
+                break;
+
             case 'delete':
                 include 'modules/data/semester/deleteSemester.php';
                 break;
@@ -74,6 +82,11 @@ switch ($page) {
             case 'tambah':
                 include 'modules/data/matkul/tambahMatkul.php';
                 break;
+
+            case 'edit':
+                include 'modules/data/matkul/editMatkul.php';
+                break;
+                
 
             case 'delete':
                 include 'modules/data/matkul/deleteMatkul.php';
@@ -98,6 +111,10 @@ switch ($page) {
 
             case 'set_sts':
                 include 'modules/data/tahunAjaran/stsAjaran.php';
+                break;
+
+            case 'edit':
+                include 'modules/data/tahunAjaran/editAjaran.php';
                 break;
 
             case 'delete':
