@@ -36,10 +36,18 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form action="data/Instruktur/aksi.php" method="post">
+                                <form action="?page=tambahInstruktur&aksi=tambah" method="post">
                                     <div class="mb-3 form-group">
                                         <label for="kode">Kode Instruktur</label>
-                                        <input type="text" name="kode" id="kode" class="form-control" readonly value="INS-001-ELT">
+                                        <?php
+                                        $q = $conn->query("SELECT MAX(kode_instruktur) AS urutan FROM instruktur");
+                                        // Membuat kode jurusan otomatis
+                                        $data2 = mysqli_fetch_array($q);
+                                        $kode2 = $data2['urutan'];
+                                        $urutan2 = (int) substr($kode2, 6, 3);
+                                        $urutan2++;
+                                        ?>
+                                        <input type="text" name="kode" id="kode" class="form-control" readonly value="INS - <?= sprintf("%03s", $urutan2) ?> - ELT">
                                     </div>
                                     <div class="mb-3 form-group">
                                         <label for="nama">Nama Instruktur</label>
@@ -50,9 +58,9 @@
                                         <input type="email" name="email" id="email" class="form-control" required autocomplete="off" placeholder="Masukkan Email Instruktur">
                                     </div>
                                     <div class="mb-3 form-group file-images">
-                                        <img src="../assets/img/user/person.png" class="mb-2 rounded-circle" id="images">
-                                        <label for="foto" class="text-black d-block">Foto</label>
-                                        <input type="file" class="gambar form-control" id="foto" accept="image/*">
+                                        <!-- <img src="../assets/img/user/person.png" class="mb-2 rounded-circle" id="images"> -->
+                                        <label for="gambar" class="text-black d-block">Foto</label>
+                                        <input type="file" class="gambar form-control" id="gambar" name="foto">
                                     </div>
                                     <div class="mb-3 form-group">
                                         <button type="submit" name="tambahInstruktur" class="w-100 btn btn-outline-success">Submit</button>

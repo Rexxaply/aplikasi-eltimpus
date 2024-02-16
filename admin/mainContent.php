@@ -25,7 +25,15 @@ switch ($page) {
         break;
 
     case 'tambahInstruktur':
-        include 'modules/instruktur/tambahInstruktur.php';
+        switch ($aksi) {
+            case '':
+                include 'modules/instruktur/tambahInstruktur.php';
+                break;
+            
+            case 'tambah':
+                include 'modules/instruktur/prosesTambah.php';
+                break;
+        }
         break;
 
     case 'jurusan':
@@ -96,7 +104,19 @@ switch ($page) {
 
 
     case 'penanggungJawab':
-        include 'modules/data/penanggungJawab.php';
+        switch ($aksi) {
+            case '':
+                include 'modules/data/penanggungJawab/penanggungJawab.php';
+                break;
+
+            case 'tambah':
+                include 'modules/data/penanggungJawab/tambahPj.php';
+                break;
+
+            case 'delete':
+                include 'modules/data/penanggungJawab/deletePj.php';
+                break;
+        }
         break;
 
     case 'tahunAjaran':
