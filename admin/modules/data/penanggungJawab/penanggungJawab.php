@@ -59,6 +59,44 @@
                                                         <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editPj<?= $wali['id_wali'] ?>"><i class="fas fa-edit text-white"></i></button>
                                                     </td>
                                                     <td>
+                                                        <!-- Modal Edit -->
+                                                        <div class="modal fade" id="editPj<?= $wali['id_wali'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Edit Data Penanggung Jawab</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <form action="?page=penanggungJawab&aksi=edit" method="post">
+                                                                        <div class="modal-body">
+                                                                            <input type="hidden" name="id_wali" value="<?= $wali['id_wali'] ?>">
+                                                                            <div class="mb-3 form-group">
+                                                                                <label for="jurusan">Jurusan</label>
+                                                                                <select name="jurusan" id="jurusan" class="form-control" required>
+                                                                                    <option value="" selected disabled>-- Pilih --</option>
+                                                                                    <?php
+                                                                                    $jurusan = $conn->query("SELECT * FROM jurusan");
+                                                                                    foreach ($jurusan as $jrs) {
+                                                                                    ?>
+                                                                                        <option value="<?= $jrs['id_jurusan'] ?>"><?= $jrs['jurusan'] ?></option>
+                                                                                    <?php } ?>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="nama">Nama Instruktur</label>
+                                                                                <input type="text" class="form-control" name="nama" id="nama" value="<?= $wali['nama_instruktur'] ?>" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn" data-dismiss="modal">Batal</button>
+                                                                            <button type="submit" name="editPj" class="btn btn-primary">Submit</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <!-- Button Trigger Modal Hapus -->
                                                         <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletePj<?= $wali['id_wali'] ?>"><i class="fas fa-trash"></i></button>
 
