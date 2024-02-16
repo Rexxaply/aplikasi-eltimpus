@@ -18,7 +18,7 @@ if (isset($_POST['tambahInstruktur'])) {
         if(in_array($ektensi, $ektensi_diperbolehkan) == true) {
             move_uploaded_file($file_tmp, '../assets/img'. $nama_gambar_baru);
 
-            $q = $conn->query("INSERT INTO (kode_instruktur, nama_instruktur, email, foto) VALUES ('$kode', '$nama', '$email', '$nama_gambar_baru')");
+            $q = $conn->query("INSERT INTO instruktur (kode_instruktur, nama_instruktur, email, foto) VALUES ('$kode', '$nama', '$email', '$nama_gambar_baru')");
 
             if ($q) {
                 echo "
