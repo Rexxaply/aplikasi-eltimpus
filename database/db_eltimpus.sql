@@ -5,9 +5,8 @@ CREATE TABLE `instruktur` (
   `kode_instruktur` varchar(50) NOT NULL,
   `nama_instruktur` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `foto` varchar(100) NOT NULL,
   PRIMARY KEY (`id_instruktur`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -106,6 +105,6 @@ CREATE TABLE `wali` (
   `jurusan_id` int(11) NOT NULL,
   `nama_instruktur` varchar(100) NOT NULL,
   PRIMARY KEY (`id_wali`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
