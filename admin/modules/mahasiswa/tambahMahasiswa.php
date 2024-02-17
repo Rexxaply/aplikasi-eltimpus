@@ -29,17 +29,17 @@
                         <div class="card">
                             <div class="card-header">
                                 <div class="card-title text-uppercase">
-                                    Form Entry Nama Instruktur
+                                    Form Entry Mahasiswa
                                 </div>
                                 <div>
                                     <button class="btn btn-success mt-3" data-toggle="modal" data-target="#sample">Import Data Mahasiswa</button>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form action="data/Instruktur/aksi.php" method="post">
+                                <form action="?page=tambahMahasiswa&aksi=tambah" method="post">
                                     <div class="mb-3 form-group">
                                         <label for="nim">NIM</label>
-                                        <input type="text" name="nim" id="nim" class="form-control" placeholder="Masukkan NIM Mahasiswa">
+                                        <input type="text" name="nim" id="nim" class="form-control" autocomplete="off" placeholder="Masukkan NIM Mahasiswa">
                                     </div>
                                     <div class="mb-3 form-group">
                                         <label for="nama">Nama Mahasiswa</label>
@@ -50,8 +50,25 @@
                                         <label for="jurusan">Jurusan</label>
                                         <select name="jurusan" id="jurusan" class="form-control" required>
                                             <option value="" selected disabled>-- Pilih --</option>
-                                            <option value="">Administrasi Perkantoran</option>
-                                            <option value="">Manajemen Informatika & Komputer</option>
+                                            <?php
+                                            $q = $conn->query("SELECT * FROM jurusan");
+                                            foreach ($q as $jrs) {
+                                            ?>
+                                                <option value="<?= $jrs['id_jurusan'] ?>"><?= $jrs['jurusan'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3 form-group">
+                                        <label for="ta">Angkatan</label>
+                                        <select name="ta" id="ta" class="form-control" required>
+                                            <option value="" selected disabled>-- Pilih --</option>
+                                            <?php
+                                            $q = $conn->query("SELECT * FROM tahun_ajaran");
+                                            foreach ($q as $ta) {
+                                            ?>
+                                                <option value="<?= $ta['tahun_pelajaran'] ?>"><?= $ta['tahun_pelajaran'] ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
 
@@ -59,8 +76,8 @@
                                         <label for="jabatan">Jabatan</label>
                                         <select name="jabatan" id="jabatan" class="form-control" required>
                                             <option value="" selected disabled>-- Pilih --</option>
-                                            <option value="">Ketua Kelas</option>
-                                            <option value="">Anggota</option>
+                                            <option value="ketua">Ketua Kelas</option>
+                                            <option value="anggota">Anggota</option>
                                         </select>
                                     </div>
 
@@ -71,12 +88,6 @@
                                             <option value="L">Laki-Laki</option>
                                             <option value="P">Perempuan</option>
                                         </select>
-                                    </div>
-
-                                    <div class="mb-3 form-group file-images">
-                                        <img src="../assets/img/user/person.png" class="mb-2 rounded-circle" id="images">
-                                        <label for="foto" class="text-black d-block">Foto</label>
-                                        <input type="file" class="gambar form-control" id="foto" accept="image/*" required>
                                     </div>
 
                                     <div class="mb-3 form-group">

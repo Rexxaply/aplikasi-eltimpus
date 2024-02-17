@@ -13,11 +13,24 @@ switch ($page) {
             case 'xls':
                 include 'modules/mahasiswa/importXls.php';
                 break;
+
+            case 'tambah':
+                include 'modules/mahasiswa/prosesMahasiswa.php';
+                break;
         }
         break;
 
     case 'dataMahasiswa':
-        include 'modules/mahasiswa/dataMahasiswa.php';
+        switch ($aksi) {
+            case '':
+                include 'modules/mahasiswa/dataMahasiswa.php';
+                break;
+                
+            case 'delete':
+                include 'modules/mahasiswa/deleteMahasiswa.php';
+                break;
+
+        }
         break;
 
     case 'dataInstruktur':
@@ -160,15 +173,43 @@ switch ($page) {
         break;
 
     case 'mataKuliah':
-        include 'modules/jadwal/mataKuliah.php';
+        switch ($aksi) {
+            case '':
+                include 'modules/jadwal/mataKuliah.php';
+                break;
+
+            case 'delete':
+                include 'modules/jadwal/deleteMatkul.php';
+                break;
+        }
         break;
 
     case 'tambahMatkul':
-        include 'modules/jadwal/tambahMatkul.php';
+        switch ($aksi) {
+            case '':
+                include 'modules/jadwal/tambahMatkul.php';
+                break;
+
+            case 'tambah':
+                include 'modules/jadwal/prosesMatkul.php';
+                break;
+        }
         break;
 
     case 'backup':
         include 'database.php';
+        break;
+
+    case 'cicilan':
+        include 'modules/cicilan/cicilan.php';
+        break;
+
+    case 'laporan':
+        include 'modules/laporan/laporan.php';
+        break;
+
+    case 'pembayaran':
+        include 'modules/pembayaran/pembayaran.php';
         break;
 
     case '':

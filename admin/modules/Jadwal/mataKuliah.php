@@ -48,31 +48,51 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php 
-                                                $no = 1;
-                                                $q = $conn->query(
-                                                    "SELECT * FROM jadwal_matkul jm INNER JOIN mata_kuliah mk ON jm.id_jadwal = mk.id_matkul 
+                                            <?php
+                                            $no = 1;
+                                            $q = $conn->query(
+                                                "SELECT * FROM jadwal_matkul jm INNER JOIN mata_kuliah mk ON jm.mata_kuliah_id = mk.id_matkul 
                                                     INNER JOIN jurusan jrs ON jm.jurusan_id = jrs.id_jurusan
                                                     INNER JOIN instruktur ins ON jm.nama_instruktur_id = ins.id_instruktur
                                                     INNER JOIN tahun_ajaran tp ON jm.tahun_pelajaran_id = tp.id_tahun_ajaran
                                                     INNER JOIN semester sms ON jm.semester_id = sms.id_semester
-                                                    ORDER BY jm.id_jadwal DESC");
-                                                
-                                                foreach ($q as $jml) {
+                                                    ORDER BY jm.id_jadwal DESC"
+                                            );
+
+                                            foreach ($q as $jml) {
                                             ?>
-                                            <tr>
-                                                <td><?= $no++ ?>.</td>
-                                                <td><?= $jml['nama_instruktur'] ?></td>
-                                                <td><?= $jml['jurusan'] ?></td>
-                                                <td><?= $jml['hari'] ?></td>
-                                                <td><?= $jml['ruangan'] ?></td>
-                                                <td><?= $jml['mata_kuliah'] ?></td>
-                                                <td><?= $jml['jam'] ?></td>
-                                                <td>
-                                                    <a href="" class="btn btn-sm btn-primary"><i class="fas fa-edit text-white"></i></a>
-                                                    <a href="" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
-                                                </td>
-                                            </tr>
+                                                <tr>
+                                                    <td><?= $no++ ?>.</td>
+                                                    <td><?= $jml['nama_instruktur'] ?></td>
+                                                    <td><?= $jml['jurusan'] ?></td>
+                                                    <td class="text-capitalize"><?= $jml['hari'] ?></td>
+                                                    <td><?= $jml['ruangan'] ?></td>
+                                                    <td><?= $jml['mata_kuliah'] ?></td>
+                                                    <td><?= $jml['jam'] ?></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteJadwal<?= $jml['id_jadwal'] ?>"><i class="fas fa-trash"></i></button>
+
+                                                        <div class="modal fade" id="deleteJadwal<?= $jml['id_jadwal'] ?>" tabindex="-1" role="dialog" aria-labelledby="modalHapuseTitle" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalCenterTitle">Hapus Jadwal Mata Kuliah</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Yakin Ingin Menghapus Jadwal Mata Kuliah <strong class="text-danger"><?= $jml['mata_kuliah'] ?></strong>?
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                                                        <a href="?page=mataKuliah&aksi=delete&id=<?= $jml['id_jadwal'] ?>" class="btn btn-primary">Hapus</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
                                             <?php } ?>
                                         </tbody>
                                     </table>

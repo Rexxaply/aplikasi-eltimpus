@@ -31,9 +31,6 @@
                                 <div class="card-title">
                                     <a href="dashboard.php?page=tambahMahasiswa" class="btn btn-sm btn-primary text-light"><i class="fas fa-user-plus"></i> Tambah Mahasiswa</a>
                                 </div>
-                                <div>
-                                    <!-- <?php include 'alert.php' ?> -->
-                                </div>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive-md">
@@ -44,23 +41,62 @@
                                                 <th>NIM</th>
                                                 <th>Nama Mahasiswa</th>
                                                 <th>Jurusan</th>
-                                                <th>Alamat</th>
-                                                <th>Foto</th>
-                                                <th width="80">Edit</th>
-                                                <th width="80">Hapus</th>
+                                                <th>Angkatan</th>
+                                                <th>Jenis Kelamin</th>
+                                                <th>Jabatan</th>
+                                                <th width="80">Opsi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1.</td>
-                                                <td>224-ADP-002</td>
-                                                <td>Abdul</td>
-                                                <td>Administrasi Perkantoran</td>
-                                                <td>Jl. Suka Maju No.8</td>
-                                                <td><img src="../assets/img/user/person.png" style="width: 45px; aspect-ratio: 1/1; background: #dfdfdf; object-fit: cover;" alt=""></td>
-                                                <td><a href="" class="btn btn-sm btn-primary"><i class="fas fa-edit text-white"></i></a></td>
-                                                <td><a href="" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a></td>
-                                            </tr>
+                                            <?php
+                                            $no = 1;
+                                            $q = $conn->query(
+                                                "SELECT * FROM mahasiswa mhs 
+                                                    INNER JOIN jurusan jrs ON mhs.jurusan_id = jrs.id_jurusan
+                                                    INNER JOIN tahun_ajaran ta ON mhs.tahun_ajaran = ta.tahun_pelajaran
+                                                    ORDER BY nim ASC"
+                                            );
+
+                                            foreach ($q as $mhs) {
+                                            ?>
+                                                <tr class="<?= $mhs['jabatan'] == 'ketua' ? 'ketua' : '' ?>">
+                                                    <td><?= $no++ ?>.</td>
+                                                    <td><?= $mhs['nim'] ?></td>
+                                                    <td><?= $mhs['nama_mahasiswa'] ?></td>
+                                                    <td><?= $mhs['jurusan'] ?></td>
+                                                    <td><?= $mhs['tahun_pelajaran'] ?></td>
+                                                    <td><?= $mhs['jk'] == 'L' ? 'Laki - laki' : 'Perempuan' ?></td>
+                                                    <td class="text-capitalize"><?= $mhs['jabatan'] ?></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMahasiswa<?= $mhs['id_mahasiswa'] ?>"><i class="fas fa-trash"></i></button>
+
+                                                        <div class="modal fade" id="deleteMahasiswa<?= $mhs['id_mahasiswa'] ?>" tabindex="-1" role="dialog" aria-labelledby="modalHapuseTitle" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalCenterTitle">Hapus Data Mahasiswa</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Yakin Ingin Menghapus <strong class="text-danger"><?= $mhs['nama_mahasiswa'] ?></strong>?
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                                                        <?php 
+                                                                            $mhss = $mhs['id_mahasiswa'];
+                                                                            $query = $conn->query("SELECT * FROM pembayaran WHERE mahasiswa_id = '$mhss'");
+                                                                            $mb = mysqli_fetch_assoc($query);
+                                                                        ?>
+                                                                        <a href="?page=dataMahasiswa&aksi=delete&id=<?= $mhs['id_mahasiswa'] ?>&idMb=<?= $mb['mahasiswa_id'] ?>" class="btn btn-primary">Hapus</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>

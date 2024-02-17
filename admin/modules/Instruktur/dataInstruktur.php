@@ -71,8 +71,8 @@
                                                                             <span aria-hidden="true">&times;</span>
                                                                         </button>
                                                                     </div>
-                                                                    <div class="modal-body">
-                                                                        <form action="?page=tambahInstruktur&aksi=edit" method="post">
+                                                                    <form action="?page=tambahInstruktur&aksi=edit" method="post">
+                                                                        <div class="modal-body">
                                                                             <div class="mb-3 form-group">
                                                                                 <input type="hidden" name="id_instruktur" value="<?= $ins['id_instruktur'] ?>">
                                                                                 <label for="kode">Kode Instruktur</label>
@@ -86,16 +86,12 @@
                                                                                 <label for="email">Email</label>
                                                                                 <input type="email" name="email" id="email" class="form-control" required autocomplete="off" value="<?= $ins['email'] ?>" placeholder="Masukkan Email Instruktur">
                                                                             </div>
-                                                                            <div class="mb-3 form-group">
-                                                                                <button type="submit" name="editinstruktur" class="w-100 btn btn-outline-success">Submit</button>
-                                                                                <a href="dashboard.php?page=dataInstruktur" class="btn btn-outline-primary w-100 text-capitalize mt-2">Kembali ke data instruktur</a>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                                                        <a href="?page=dataInstruktur&aksi=delete&id=<?= $ins['id_instruktur'] ?>" class="btn btn-primary">Hapus</a>
-                                                                    </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                                                            <button name="editinstruktur" class="btn btn-primary">Submit</button>
+                                                                        </div>
+                                                                    </form>
                                                                 </div>
                                                             </div>
                                                         </div>

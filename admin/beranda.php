@@ -14,45 +14,45 @@
                 </div>
 
                 <div class="row g-3 mt-4">
-                    <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-4 col-sm-12">
                         <div class="card text-center my-rounded on-hover animate__animated animate__zoomIn">
                             <div class="mt-4">
                                 <i class="fas fa-chalkboard-teacher fa-10x"></i>
                                 <div class="card-body">
-                                    <h4 class="card-title">0</h4>
+                                    <h4 class="card-title"><?= $get_instruktur ?></h4>
                                     <p class="card-text">Instruktur</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-4 col-sm-12">
                         <div class="card text-center my-rounded on-hover animate__animated animate__zoomIn animate__delay-03s">
                             <div class="mt-4">
                                 <i class="fas fa-book-open fa-10x"></i>
                                 <div class="card-body">
-                                    <h4 class="card-title">0</h4>
+                                    <h4 class="card-title"><?= $get_matkul ?></h4>
                                     <p class="card-text">Daftar Mata Kuliah</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-4 col-sm-12">
                         <div class="card text-center my-rounded on-hover animate__animated animate__zoomIn animate__delay-06s">
                             <div class="mt-4">
                                 <i class="fas fa-graduation-cap fa-10x"></i>
                                 <div class="card-body">
-                                    <h4 class="card-title">0</h4>
+                                    <h4 class="card-title"><?= $get_mahasiswa ?></h4>
                                     <p class="card-text">Jumlah Mahasiswa</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-4 col-sm-12">
                         <div class="card text-center my-rounded on-hover animate__animated animate__zoomIn animate__delay-09s">
                             <div class="mt-4">
                                 <i class="fas fa-university fa-10x"></i>
                                 <div class="card-body">
-                                    <h4 class="card-title">0</h4>
+                                    <h4 class="card-title"><?= $get_jurusan ?></h4>
                                     <p class="card-text">Daftar Jurusan</p>
                                 </div>
                             </div>
