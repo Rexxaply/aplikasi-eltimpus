@@ -49,21 +49,60 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php 
-                                                $no = 1;
-                                                $q = $conn->query("SELECT * FROM instruktur ORDER BY kode_instruktur ASC");
-                                                foreach ($q as $ins) {
+                                            <?php
+                                            $no = 1;
+                                            $q = $conn->query("SELECT * FROM instruktur ORDER BY kode_instruktur ASC");
+                                            foreach ($q as $ins) {
                                             ?>
-                                            <tr>
-                                                <td><?= $no++ ?>.</td>
-                                                <td><?= $ins['kode_instruktur'] ?></td>
-                                                <td><?= $ins['nama_instruktur'] ?></td>
-                                                <td><?= $ins['email'] ?></td>
-                                                <td><a href="" class="btn btn-sm btn-primary"><i class="fas fa-edit text-white"></i></a></td>
-                                                <td>
-                                                    <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteInstruktur<?= $ins['id_instruktur'] ?>"><i class="fas fa-trash"></i></button>
+                                                <tr>
+                                                    <td><?= $no++ ?>.</td>
+                                                    <td><?= $ins['kode_instruktur'] ?></td>
+                                                    <td><?= $ins['nama_instruktur'] ?></td>
+                                                    <td><?= $ins['email'] ?></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editInstruktur<?= $ins['id_instruktur'] ?>"><i class="fas fa-edit text-white"></i></button>
 
-                                                    <div class="modal fade" id="deleteInstruktur<?= $ins['id_instruktur'] ?>" tabindex="-1" role="dialog" aria-labelledby="modalHapuseTitle" aria-hidden="true">
+                                                        <div class="modal fade" id="editInstruktur<?= $ins['id_instruktur'] ?>" tabindex="-1" role="dialog" aria-labelledby="modalHapuseTitle" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalCenterTitle">Hapus Penanggung Jawab</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form action="?page=tambahInstruktur&aksi=edit" method="post">
+                                                                            <div class="mb-3 form-group">
+                                                                                <input type="hidden" name="id_instruktur" value="<?= $ins['id_instruktur'] ?>">
+                                                                                <label for="kode">Kode Instruktur</label>
+                                                                                <input type="text" name="kode" id="kode" class="form-control" readonly value="<?= $ins['kode_instruktur'] ?> ">
+                                                                            </div>
+                                                                            <div class="mb-3 form-group">
+                                                                                <label for="nama">Nama Instruktur</label>
+                                                                                <input type="text" name="nama" id="nama" class="form-control text-capitalize" value="<?= $ins['nama_instruktur'] ?>" required autocomplet="off" placeholder="Masukkan Nama Instruktur">
+                                                                            </div>
+                                                                            <div class="mb-3 form-group">
+                                                                                <label for="email">Email</label>
+                                                                                <input type="email" name="email" id="email" class="form-control" required autocomplete="off" value="<?= $ins['email'] ?>" placeholder="Masukkan Email Instruktur">
+                                                                            </div>
+                                                                            <div class="mb-3 form-group">
+                                                                                <button type="submit" name="editinstruktur" class="w-100 btn btn-outline-success">Submit</button>
+                                                                                <a href="dashboard.php?page=dataInstruktur" class="btn btn-outline-primary w-100 text-capitalize mt-2">Kembali ke data instruktur</a>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                                                        <a href="?page=dataInstruktur&aksi=delete&id=<?= $ins['id_instruktur'] ?>" class="btn btn-primary">Hapus</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteInstruktur<?= $ins['id_instruktur'] ?>"><i class="fas fa-trash"></i></button>
+                                                        <div class="modal fade" id="deleteInstruktur<?= $ins['id_instruktur'] ?>" tabindex="-1" role="dialog" aria-labelledby="modalHapuseTitle" aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
@@ -83,8 +122,8 @@
                                                             </div>
                                                         </div>
 
-                                                </td>
-                                            </tr>
+                                                    </td>
+                                                </tr>
                                             <?php } ?>
                                         </tbody>
                                     </table>
