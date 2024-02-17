@@ -31,9 +31,6 @@
                                 <div class="card-title">
                                     <a href="dashboard.php?page=tambahMatkul" class="btn btn-sm btn-primary text-light"><i class="fas fa-user-plus"></i> Tambah Jadwal Mata Kuliah</a>
                                 </div>
-                                <div>
-                                    <!-- <?php include 'alert.php' ?> -->
-                                </div>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive-md">
@@ -51,19 +48,32 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php 
+                                                $no = 1;
+                                                $q = $conn->query(
+                                                    "SELECT * FROM jadwal_matkul jm INNER JOIN mata_kuliah mk ON jm.id_jadwal = mk.id_matkul 
+                                                    INNER JOIN jurusan jrs ON jm.jurusan_id = jrs.id_jurusan
+                                                    INNER JOIN instruktur ins ON jm.nama_instruktur_id = ins.id_instruktur
+                                                    INNER JOIN tahun_ajaran tp ON jm.tahun_pelajaran_id = tp.id_tahun_ajaran
+                                                    INNER JOIN semester sms ON jm.semester_id = sms.id_semester
+                                                    ORDER BY jm.id_jadwal DESC");
+                                                
+                                                foreach ($q as $jml) {
+                                            ?>
                                             <tr>
-                                                <td>1.</td>
-                                                <td>Juleha</td>
-                                                <td>Manajemen Informatika & Komputer</td>
-                                                <td>Kamis</td>
-                                                <td>Lab 1</td>
-                                                <td>Web Programming</td>
-                                                <td>12.00 - 13.00 WIB</td>
+                                                <td><?= $no++ ?>.</td>
+                                                <td><?= $jml['nama_instruktur'] ?></td>
+                                                <td><?= $jml['jurusan'] ?></td>
+                                                <td><?= $jml['hari'] ?></td>
+                                                <td><?= $jml['ruangan'] ?></td>
+                                                <td><?= $jml['mata_kuliah'] ?></td>
+                                                <td><?= $jml['jam'] ?></td>
                                                 <td>
                                                     <a href="" class="btn btn-sm btn-primary"><i class="fas fa-edit text-white"></i></a>
                                                     <a href="" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
