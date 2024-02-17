@@ -74,13 +74,13 @@
                                                                             <input type="hidden" name="id_wali" value="<?= $wali['id_wali'] ?>">
                                                                             <div class="mb-3 form-group">
                                                                                 <label for="jurusan">Jurusan</label>
-                                                                                <select name="jurusan" id="jurusan" class="form-control" required>
-                                                                                    <option value="" selected disabled>-- Pilih --</option>
+                                                                                <select name="jurusan" id="jurusan" class="form-control">
+                                                                                    <option value="">-- Pilih --</option>
                                                                                     <?php
                                                                                     $jurusan = $conn->query("SELECT * FROM jurusan");
                                                                                     foreach ($jurusan as $jrs) {
                                                                                     ?>
-                                                                                        <option value="<?= $jrs['id_jurusan'] ?>"><?= $jrs['jurusan'] ?></option>
+                                                                                        <option value="<?= $jrs['id_jurusan'] ?>" <?= $jrs['id_jurusan'] == $wali['jurusan_id'] ? 'selected' : '' ?>><?= $jrs['jurusan'] ?></option>
                                                                                     <?php } ?>
                                                                                 </select>
                                                                             </div>

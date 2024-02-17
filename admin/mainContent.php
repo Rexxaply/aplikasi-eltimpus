@@ -114,7 +114,7 @@ switch ($page) {
                 break;
 
             case 'edit':
-                include 'modules/data/penanggungJawab/edithPj.php';
+                include 'modules/data/penanggungJawab/editPj.php';
                 break;
 
             case 'delete':

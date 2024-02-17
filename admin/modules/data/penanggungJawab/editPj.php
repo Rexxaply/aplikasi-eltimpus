@@ -3,11 +3,11 @@ include '../config/config.php';
 
 // Tempat Jurusan
 if (isset($_POST['editPj'])) {
-    $wali = $_POST['id_wali'];
+    $id_wali = $_POST['id_wali'];
     $jurusan = $_POST['jurusan'];
     $nama = $_POST['nama'];
 
-    $q = $conn->query("UPDATE wali SET jurusan='$jurusan', nama='$nama' WHERE id_wali='$wali'");
+    $q = $conn->query("UPDATE wali SET jurusan_id='$jurusan', nama_instruktur='$nama' WHERE id_wali='$id_wali'");
     if ($q) {
         echo "
         <script type='text/javascript'>
