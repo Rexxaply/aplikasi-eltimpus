@@ -1,27 +1,15 @@
 <?php
-    include '../config/config.php';
+include '../config/config.php';
 
 if (isset($_POST['tambahInstruktur'])) {
     $kode = $_POST['kode'];
     $nama = $_POST['nama'];
     $email = $_POST['email'];
-    $gambar = $_FILES['foto']['name'];
 
-    if($gambar != "") {
-        $ektensi_diperbolehkan = array('png', 'jpg', 'jpeg');
-        $x = explode('.', $gambar);
-        $ektensi = strtolower(end($x));
-        $file_tmp = $_FILES['gambar']['tmp_name'];
-        $angka_acak = rand(1, 999);
-        $nama_gambar_baru = $angka_acak.'-'.$gambar;
+    $q = $conn->query("INSERT INTO instruktur (kode_instruktur, nama_instruktur, email) VALUES ('$kode', '$nama', '$email')");
 
-        if(in_array($ektensi, $ektensi_diperbolehkan) == true) {
-            move_uploaded_file($file_tmp, '../assets/img' . $nama_gambar_baru);
-
-            $q = $conn->query("INSERT INTO (kode_instruktur, nama_instruktur, email, foto) VALUES ('$kode', '$nama', '$email', '$nama_gambar_baru')");
-
-            if ($q) {
-                echo "
+    if ($q) {
+        echo "
                 <script type='text/javascript'>
                     setTimeout(function () { 
         
@@ -35,11 +23,11 @@ if (isset($_POST['tambahInstruktur'])) {
                         });    
                     },10);  
                         window.setTimeout(function(){ 
-                            window.location.replace('?page=penanggungJawab');
+                            window.location.replace('?page=dataInstruktur');
                         } ,3000);   
                 </script>";
-            } else {
-                echo "
+    } else {
+        echo "
                 <script type='text/javascript'>
                     setTimeout(function () { 
         
@@ -53,18 +41,8 @@ if (isset($_POST['tambahInstruktur'])) {
                         });    
                     },10);  
                         window.setTimeout(function(){ 
-                            window.location.replace('?page=penanggungJawab');
+                            window.location.replace('?page=dataInstruktur');
                         } ,3000);   
                 </script>";
-            }
-
-        } else {
-            echo "
-            <script>
-                alert('Ektensi gambar hanya bisa png, jpeg, dan jpg saja!);
-                window.location='?page=tambahInstruktur';
-            </script>";
-        }
     }
-    
 }

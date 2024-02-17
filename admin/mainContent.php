@@ -21,7 +21,15 @@ switch ($page) {
         break;
 
     case 'dataInstruktur':
-        include 'modules/instruktur/dataInstruktur.php';
+        switch ($aksi) {
+            case '':
+                include 'modules/instruktur/dataInstruktur.php';
+                break;
+
+            case 'delete':
+                include 'modules/Instruktur/deleteInstruktur.php';
+                break;
+        }
         break;
 
     case 'tambahInstruktur':
@@ -29,9 +37,13 @@ switch ($page) {
             case '':
                 include 'modules/instruktur/tambahInstruktur.php';
                 break;
-            
+
             case 'tambah':
                 include 'modules/instruktur/prosesTambah.php';
+                break;
+
+            case 'edit':
+                include 'modules/Instruktur/proses_edit.php';
                 break;
         }
         break;
@@ -94,7 +106,7 @@ switch ($page) {
             case 'edit':
                 include 'modules/data/matkul/editMatkul.php';
                 break;
-                
+
 
             case 'delete':
                 include 'modules/data/matkul/deleteMatkul.php';
