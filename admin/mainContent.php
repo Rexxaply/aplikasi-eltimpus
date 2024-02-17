@@ -113,6 +113,10 @@ switch ($page) {
                 include 'modules/data/penanggungJawab/tambahPj.php';
                 break;
 
+            case 'edit':
+                include 'modules/data/penanggungJawab/edithPj.php';
+                break;
+
             case 'delete':
                 include 'modules/data/penanggungJawab/deletePj.php';
                 break;
