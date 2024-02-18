@@ -1,4 +1,4 @@
-<section class="ftco-section">
+<section class="ftco-section animate__animated animate__fadeInUp animate__delay-09s">
     <div class="container">
         <div class="row">
             <div class="col-md-12">

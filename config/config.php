@@ -25,6 +25,11 @@ $jurusan = $conn->query("SELECT COUNT(id_jurusan) as jrs FROM jurusan");
 $data_jurusan = mysqli_fetch_assoc($jurusan);
 $get_jurusan = $data_jurusan['jrs'];
 
+// Pembayaran
+$pembayaran = $conn->query("SELECT SUM(jumlah) as pmb FROM pembayaran WHERE ket = 'LUNAS'");
+$data_pembayaran = mysqli_fetch_assoc($pembayaran);
+$get_pembayaran = $data_pembayaran['pmb'];
+
 $bulanIndo = [
     '1' => 'Januari',
     '2' => 'Februari',

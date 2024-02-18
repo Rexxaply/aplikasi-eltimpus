@@ -67,67 +67,7 @@
                                     </div>
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Uang</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. 0</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="card d-flex flex-warp my-rounded on-hover animate__animated animate__fadeInRight animate__delay-09s">
-                            <div class="card-body">
-                                <div class="row ml-4">
-                                    <div class="col-12-md mb-2">
-                                        <span class="font-weight-bold fa-2x">Sakit</span>
-                                    </div>
-                                </div>
-                                <div class="row ml-4">
-                                    <div class="col-2-md">
-                                        <i class="far fa-dizzy fa-5x text-warning"></i>
-                                    </div>
-                                    <div class="col-7">
-                                        <h4 class="card-title">0</h4>
-                                        <span class="card-text"><span class="font-weight-bold text-danger">Total</span> dari 0 Mahasiswa</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="card d-flex flex-warp my-rounded on-hover animate__animated animate__fadeInRight animate__delay-1-1s">
-                            <div class="card-body">
-                                <div class="row ml-4">
-                                    <div class="col-12-md mb-2">
-                                        <span class="font-weight-bold fa-2x">Izin</span>
-                                    </div>
-                                </div>
-                                <div class="row ml-4">
-                                    <div class="col-2-md">
-                                        <i class="far fa-meh fa-5x text-primary"></i>
-                                    </div>
-                                    <div class="col-7">
-                                        <h4 class="card-title">0</h4>
-                                        <span class="card-text"><span class="font-weight-bold text-danger">Total</span> dari 0 Mahasiswa</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="card d-flex flex-warp my-rounded on-hover animate__animated animate__fadeInRight animate__delay-1-3s">
-                            <div class="card-body">
-                                <div class="row ml-4">
-                                    <div class="col-12-md mb-2">
-                                        <span class="font-weight-bold fa-2x">Alpa</span>
-                                    </div>
-                                </div>
-                                <div class="row ml-4">
-                                    <div class="col-2-md">
-                                        <i class="far fa-frown fa-5x text-danger"></i>
-                                    </div>
-                                    <div class="col-7">
-                                        <h4 class="card-title">0</h4>
-                                        <span class="card-text"><span class="font-weight-bold text-danger">Total</span> dari 0 Mahasiswa</span>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. <?= number_format($get_pembayaran,0,",",".") ?>,-</div>
                                     </div>
                                 </div>
                             </div>
