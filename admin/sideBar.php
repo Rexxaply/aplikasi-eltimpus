@@ -174,7 +174,7 @@
                     </a>
                 </li>
                 <li class="nav-item active mt-4">
-                    <a href="dashboard.php">
+                    <a href="../logout.php">
                         <i class="fas fa-sign-out-alt text-danger"></i>
                         <p>Log Out</p>
                     </a>

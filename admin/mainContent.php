@@ -201,11 +201,23 @@ switch ($page) {
         break;
 
     case 'cicilan':
-        include 'modules/cicilan/cicilan.php';
+        switch ($aksi) {
+            case '':
+                include 'modules/cicilan/cicilan.php';
+                break;
+
+            case 'prosesCicilan':
+                include 'modules/cicilan/prosesCicilan.php';
+                break;
+
+            case 'deleteCicilan':
+                include 'modules/cicilan/prosesCicilan.php';
+                break;
+        }
         break;
 
     case 'laporan':
-        include 'modules/laporan/laporan.php';
+        include 'coming.php';
         break;
 
     case 'pembayaran':

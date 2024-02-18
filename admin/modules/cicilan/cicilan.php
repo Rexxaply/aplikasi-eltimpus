@@ -83,8 +83,52 @@
                                 </div>
 
                                 <?php
-                                    
+                                $jq = $conn->query("SELECT * FROM mahasiswa WHERE id_mahasiswa = '$id_mahasiswa'");
+                                $hasil = mysqli_fetch_array($jq);
+                                $tahunanggaran = substr($hasil['tahun_ajaran'], 0, 4);
+                                $nexttahunanggaran = $tahunanggaran + 1;
+
+                                $ceklunas = $conn->query("SELECT COUNT(tgl_bayar) FROM pembayaran WHERE tgl_bayar !=0 AND mahasiswa_id = '$id_mahasiswa'");
+                                $lunas = mysqli_fetch_array($ceklunas);
+                                $width = $lunas[0]/12*100;
+
+                                if ($width <= 45) {
+                                    $progress = "progress-bar bg-danger";
+                                } elseif ($width <= 65) {
+                                    $progress = "progress-bar bg-warning";
+                                } elseif ($width <= 75) {
+                                    $progress = "progress-bar bg-info";
+                                } elseif ($width <= 100) {
+                                    $progress = "progress-bar bg-success";
+                                }
+
+                                if ($lunas[0] == 12) {
+                                    $keterangan = "Cicilan Lunas&nbsp;";
+                                } elseif ($lunas[0] < 12) {
+                                    $keterangan = "Cicilan Dibayar $lunas[0] bulan&nbsp;";
+                                }
                                 ?>
+
+                                <div class="card">
+                                    <a href="#tampilData" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="tampilData">
+                                        <h6 class="m-0 font-weight-bold text-primary">Data Pembayaran Cicilan [Tahun <?= $tahunanggaran; ?>/<?= $nexttahunanggaran; ?>]</h6>
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <div><?= $keterangan ?></div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="progress progress-sm mr-2">
+                                                    <div class="<?= $progress ?>" role="progressbar" style="width: <?= $width ?>%" aria-valuenow="<?= $lunas[0] ?>" aria-valuemin="0" aria-valuemax="12"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="collapse show" id="tampilData">
+                                        <div class="card-body">
+                                            <?php include "modules/cicilan/data.php"; ?>
+                                        </div>
+                                    </div>
+                                </div>
 
                         <?php }
                         }

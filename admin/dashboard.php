@@ -1,5 +1,14 @@
-<?php 
-    include '../config/config.php';
+<?php
+session_start();
+include '../config/config.php';
+
+if (!isset($_SESSION['admin'])) {
+?> <script>
+		alert('Maaf ! Anda Belum Login !!');
+		window.location = '../index.php';
+	</script>
+<?php
+}
 ?>
 
 <!DOCTYPE html>
