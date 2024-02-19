@@ -147,3 +147,10 @@
         </div>
     </footer>
 </div>
+<script>
+    // let nim = <?= json_encode($_POST['nim'] ?? null) ?>;
+    
+    // if (nim) {
+    //     window.location.reload();
+    // }
+</script>

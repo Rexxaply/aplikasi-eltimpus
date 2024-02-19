@@ -32,7 +32,7 @@ if (isset($_GET['act'])) {
                         });
                     },10);
                         window.setTimeout(function(){
-                            window.location.reload(history.back());
+                            window.history.back();
                         } ,2000);
                 </script>";
         } else {
