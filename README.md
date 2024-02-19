@@ -13,3 +13,7 @@ Bahasa yang digunakan : PHP dan Javascript serta dengan bantuan beberapa plugin
 -- Import Database dengan file sql di folder database
 -- buat page baru di chrome lalu tulis url 'http://localhost/aplikasi-eltimpus/admin/dashboard.php'
 -- Pastikan tidak ada error saat menjalankan Aplikasi dan apabila terjadi error cek ulang lokasi menaruh foldernya
+
+-- Username dan Password
+* email = admin@gmai.com
+* password = admin
